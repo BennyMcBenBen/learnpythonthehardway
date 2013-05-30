@@ -33,9 +33,7 @@ def get_word_tuple(word):
             return ('error', word)
 
 def scan(sentence):
-    """
-    Returns a (word_type, word) tuple for each word in sentence.
-    """
+    """ Returns a (word_type, word) tuple for each word in sentence. """
     words = sentence.split()
     return [get_word_tuple(word) for word in words]
     
