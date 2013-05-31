@@ -10,7 +10,7 @@ config = {
     'download_url': 'Where to download it.',
     'author_email': 'My email.',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': ['nose', 'nose-cov'],
     'packages': ['ex48'],
     'scripts': [],
     'name': 'ex48'
