@@ -1,21 +1,25 @@
 import web
 
+web.config.debug = False
+
 urls = (
-    '/hello', 'Index'
+    "/count", "count",
+    "/reset", "reset"
 )
 
-app = web.application(urls, globals())
+app = web.application(urls, locals())
+store = web.session.DiskStore('sessions')
+session = web.session.Session(app, store, initializer={'count': 0})
 
-render = web.template.render('templates/', base="layout")
-
-class Index(object):
+class count:
     def GET(self):
-        return render.hello_form()
+        session.count += 1
+        return str(session.count)
         
-    def POST(self):
-        form = web.input(name="Nobody", greet="Hello")
-        greeting = "{}, {}".format(form.greet, form.name)
-        return render.index(greeting = greeting)
+class reset:
+    def GET(self):
+        session.kill()
+        return ""
         
 if __name__ == "__main__":
     app.run()
