@@ -7,10 +7,9 @@ class Room(object):
         
     def go(self, direction):
         if direction in self.paths:
-            room = self.paths.get(direction)
+           return self.paths.get(direction)
         else:
-            room = self.paths.get('*', None)
-        return room
+            return self.paths.get('*', None)
         
     def add_paths(self, paths):
         self.paths.update(paths)
